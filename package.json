@@ -1,0 +1,17 @@
+{
+  "name": "es6-computed-property-keys",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "through": "^2.3",
+    "recast": "^0.5",
+    "esprima": "git+https://github.com/vslinko-forks/esprima.git#6be298aca5f97c55c3fe3f273edb8c6235199d8e"
+  },
+  "devDependencies": {
+    "mocha": "^1.19",
+    "chai": "^1.9"
+  }
+}
