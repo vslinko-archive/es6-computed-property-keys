@@ -14,8 +14,8 @@ describe('ES6ComputedPropertyKeys', function() {
     var code = [
       'z = {',
       '  foo: 1,',
-      '  [x]: 2,',
-      '  [++y]: 3',
+      '  [this.x]: 2,',
+      '  [++this.y]: 3',
       '};'
     ].join('\n');
 
@@ -25,16 +25,16 @@ describe('ES6ComputedPropertyKeys', function() {
       '    foo: 1',
       '  };',
       '',
-      '  obj[x] = 2;',
-      '  obj[++y] = 3;',
+      '  obj[this.x] = 2;',
+      '  obj[++this.y] = 3;',
       '  return obj;',
-      '}();'
+      '}.bind(this)();'
     ].join('\n');
 
     expectTransform(code, result);
 
-    var x = "bar";
-    var y = 1;
+    this.x = "bar";
+    this.y = 1;
     var z;
     eval(result);
     expect(z.foo).to.eql(1);
