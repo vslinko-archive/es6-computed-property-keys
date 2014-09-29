@@ -41,4 +41,17 @@ describe('ES6ComputedPropertyKeys', function() {
     expect(z.bar).to.eql(2);
     expect(z[2]).to.eql(3);
   });
+
+  it('should allow referencing an object called "obj" inside a computed property key', function() {
+    var code = [
+      'var obj = {a: "b"};',
+      'var z = {',
+      '  [obj.a]: 2',
+      '};'
+    ].join('\n');
+
+    var z;
+    eval(transform(code));
+    expect(z.b).to.eql(2);
+  });
 });
